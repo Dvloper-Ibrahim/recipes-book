@@ -4,15 +4,19 @@ import { Subscription } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
 import { LoggingService } from '../logging.service';
+import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-list',
+  standalone: true,
+  imports: [CommonModule, ShoppingEditComponent],
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Ingredient[];
-  private subscription: Subscription;
+  ingredients!: Ingredient[];
+  private subscription!: Subscription;
 
   constructor(private slService: ShoppingListService,
       private loggingService: LoggingService) { }
