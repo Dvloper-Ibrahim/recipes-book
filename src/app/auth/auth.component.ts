@@ -2,24 +2,28 @@ import {
   Component,
   ComponentFactoryResolver,
   OnDestroy,
-  ViewChild,
+  // ViewChild,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 import { AuthService, AuthResponseData } from './auth.service';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceHolderDirective } from '../shared/place-holder/place-holder.directive';
+import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-auth',
+  standalone: true,
+  imports: [CommonModule, FormsModule, AlertComponent, LoadingSpinnerComponent],
   templateUrl: './auth.component.html',
 })
 export class AuthComponent implements OnDestroy {
   isLoginMode = true;
   isLoading = false;
-  error: string = null;
+  error: string | null = null;
 
   /* Another solution for alert component */
   // private closeAlertSub: Subscription;

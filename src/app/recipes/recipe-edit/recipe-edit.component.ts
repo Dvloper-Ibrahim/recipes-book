@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { RecipeService } from '../recipe.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-edit',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
-  id: number;
+  id!: number;
   editMode = false;
-  recipeForm: FormGroup;
+  recipeForm!: FormGroup;
 
   get recipeControls() {
     return (this.recipeForm.get('ingredients') as FormArray).controls
@@ -70,7 +73,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    let recipeIngredients = new FormArray<FormGroup>([]);
 
     if (this.editMode) {
       const recipe = this.recipeService.getRecipe(this.id);
