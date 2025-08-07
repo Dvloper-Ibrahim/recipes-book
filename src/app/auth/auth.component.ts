@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 
 import { AuthService, AuthResponseData } from './auth.service';
 import { AlertComponent } from '../shared/alert/alert.component';
-import { PlaceHolderDirective } from '../shared/place-holder/place-holder.directive';
+// import { PlaceHolderDirective } from '../shared/place-holder/place-holder.directive';
 import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 
 @Component({
