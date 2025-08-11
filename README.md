@@ -1,6 +1,8 @@
 # Recipes Book
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 20.1.4.
+
+**NOTE :** this branch is using standalone-components version of Angular
 
 ## Development server
 
