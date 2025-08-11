@@ -2,7 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
 
-**NOTE :** this branch is using NgModules version of Angular
+**NOTE :** this branch is using NgModules version of Angular.
+
+**And :** this branch is managing state with services and Rxjs subjects (not Ngrx library).
 
 ## Development server
 
