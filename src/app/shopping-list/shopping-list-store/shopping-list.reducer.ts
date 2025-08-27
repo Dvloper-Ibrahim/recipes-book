@@ -2,9 +2,9 @@ import { createReducer, on } from '@ngrx/store';
 
 import { Ingredient } from '../../shared/ingredient.model';
 import { addIngredient, addIngredients, deleteIngredient, startEditingIngredient, stopEditingIngredient, updateIngredient } from './shopping-list.actions';
-import { ShoppingListState } from '../../shared/store/store.types';
+import { ShoppingListState } from '../../shared/store/store-repo';
 
-const initialState: ShoppingListState = {
+const initialShoppingState: ShoppingListState = {
   ingredients: [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10)
@@ -14,7 +14,7 @@ const initialState: ShoppingListState = {
 };
 
 export const shoppingListReducer = createReducer(
-  initialState,
+  initialShoppingState,
   on(addIngredient, (state, action) => ({
     ...state,
     ingredients: [...state.ingredients, action.value]
