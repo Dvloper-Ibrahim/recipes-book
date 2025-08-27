@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 
-import { StoreState } from '../../shared/store/store.types';
+import { StoreState } from '../../shared/store/store-repo';
 
 export const selectShoppingList = (state: StoreState) => state.shoppingList;
 

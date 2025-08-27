@@ -6,12 +6,14 @@ import {
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 import { appRoutes } from './app.routes';
 import { CoreModule } from './core.module';
-import { shoppingListReducer } from './shopping-list/shopping-list-store/shopping-list.reducer';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { appReducers } from './shared/store/store-repo';
+import { AuthEffects } from './auth/auth-store/auth.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,8 +23,10 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     importProvidersFrom(CoreModule),
-    provideStore({
-      shoppingList: shoppingListReducer,
-    }),
+    provideStore(appReducers),
+    // provideStore({
+    //   shoppingList: shoppingListReducer,
+    // }),
+    provideEffects([AuthEffects]),
   ],
 };

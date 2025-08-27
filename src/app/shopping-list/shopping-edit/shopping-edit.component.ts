@@ -12,7 +12,7 @@ import {
   updateIngredient,
 } from '../shopping-list-store/shopping-list.actions';
 import { selectShoppingList } from '../shopping-list-store/shopping-list.selector';
-import { StoreState } from '../../shared/store/store.types';
+import { StoreState } from '../../shared/store/store-repo';
 
 @Component({
   selector: 'app-shopping-edit',

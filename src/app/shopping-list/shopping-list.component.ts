@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { LoggingService } from '../logging.service';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
-import { StoreState } from '../shared/store/store.types';
+import { StoreState } from '../shared/store/store-repo';
 import { selectIngredients } from './shopping-list-store/shopping-list.selector';
 import { Ingredient } from '../shared/ingredient.model';
 import { startEditingIngredient } from './shopping-list-store/shopping-list.actions';
