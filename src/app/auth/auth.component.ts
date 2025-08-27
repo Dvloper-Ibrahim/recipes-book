@@ -9,7 +9,6 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { AlertComponent } from '../shared/alert/alert.component';
 import { PlaceHolderDirective } from '../shared/place-holder/place-holder.directive';
 import {
   clearAuthError,
