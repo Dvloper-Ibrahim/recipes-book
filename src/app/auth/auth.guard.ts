@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { map, tap, take } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { selectAuthState } from './auth-store/auth.selector';
+import { selectAuthState } from './auth-store/auth.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
