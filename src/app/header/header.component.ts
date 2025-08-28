@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DropdownDirective } from '../shared/dropdown.directive';
 import { Store } from '@ngrx/store';
 import { StoreState } from '../shared/store/store-repo';
-import { selectAuthState } from '../auth/auth-store/auth.selector';
+import { selectAuthState } from '../auth/auth-store/auth.selectors';
 import { logoutUser } from '../auth/auth-store/auth.actions';
 
 @Component({

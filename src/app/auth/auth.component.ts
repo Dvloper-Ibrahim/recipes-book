@@ -18,7 +18,7 @@ import {
   startLogin,
   startSignup,
 } from './auth-store/auth.actions';
-import { selectAuthState } from './auth-store/auth.selector';
+import { selectAuthState } from './auth-store/auth.selectors';
 import { StoreState } from '../shared/store/store-repo';
 
 @Component({

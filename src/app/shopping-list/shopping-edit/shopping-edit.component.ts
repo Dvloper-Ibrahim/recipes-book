@@ -11,7 +11,7 @@ import {
   stopEditingIngredient,
   updateIngredient,
 } from '../shopping-list-store/shopping-list.actions';
-import { selectShoppingList } from '../shopping-list-store/shopping-list.selector';
+import { selectShoppingList } from '../shopping-list-store/shopping-list.selectors';
 import { StoreState } from '../../shared/store/store-repo';
 
 @Component({
