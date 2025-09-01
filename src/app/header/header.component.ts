@@ -3,9 +3,12 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 
-import { DataStorageService } from '../shared/data-storage.service';
 import { selectAuthState } from '../auth/auth-store/auth.selectors';
 import { logoutUser } from '../auth/auth-store/auth.actions';
+import {
+  fetchRecipes,
+  storeRecipes,
+} from '../recipes/recipes-store/recipes.actions';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +19,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
     private store: Store
   ) {}
 
@@ -30,11 +32,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSaveData() {
-    this.dataStorageService.storeRecipes();
+    this.store.dispatch(storeRecipes());
   }
 
   onFetchData() {
-    this.dataStorageService.fetchRecipes().subscribe();
+    this.store.dispatch(fetchRecipes());
   }
 
   onLogout() {
