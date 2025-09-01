@@ -13,7 +13,7 @@ export const startLogin = createAction(
 
 export const authenticateSuccess = createAction(
   '[Auth] Authenticate_Login_User',
-  props<{ value: User }>()
+  props<{ value: User, redirect: boolean }>()
 );
 
 export const authenticateFail = createAction(

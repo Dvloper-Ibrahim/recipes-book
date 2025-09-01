@@ -1,14 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { map, Subscription } from 'rxjs';
-
-import { DataStorageService } from '../shared/data-storage.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { DropdownDirective } from '../shared/dropdown.directive';
 import { Store } from '@ngrx/store';
+
+import { DropdownDirective } from '../shared/dropdown.directive';
 import { StoreState } from '../shared/store/store-repo';
 import { selectAuthState } from '../auth/auth-store/auth.selectors';
 import { logoutUser } from '../auth/auth-store/auth.actions';
+import {
+  fetchRecipes,
+  storeRecipes,
+} from '../recipes/recipes-store/recipes.actions';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +24,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private userSub!: Subscription;
 
   constructor(
-    private dataStorageService: DataStorageService,
     private store: Store<StoreState>
   ) {}
 
@@ -35,11 +37,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSaveData() {
-    this.dataStorageService.storeRecipes();
+    this.store.dispatch(storeRecipes());
   }
 
   onFetchData() {
-    this.dataStorageService.fetchRecipes().subscribe();
+    this.store.dispatch(fetchRecipes());
   }
 
   onLogout() {

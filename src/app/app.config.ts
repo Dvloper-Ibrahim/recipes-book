@@ -14,6 +14,7 @@ import { appRoutes } from './app.routes';
 import { CoreModule } from './core.module';
 import { appReducers } from './shared/store/store-repo';
 import { AuthEffects } from './auth/auth-store/auth.effects';
+import { RecipesEffects } from './recipes/recipes-store/recipes.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,6 +28,6 @@ export const appConfig: ApplicationConfig = {
     // provideStore({
     //   shoppingList: shoppingListReducer,
     // }),
-    provideEffects([AuthEffects]),
+    provideEffects([AuthEffects, RecipesEffects]),
   ],
 };

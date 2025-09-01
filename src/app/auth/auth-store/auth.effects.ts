@@ -38,7 +38,7 @@ const handleAuthentication = (resData: AuthResponseData) => {
     expirationDate
   );
   localStorage.setItem('userData', JSON.stringify(user));
-  return authenticateSuccess({ value: user });
+  return authenticateSuccess({ value: user, redirect: true });
 };
 
 const handleError = (errorRes: any) => {
@@ -93,7 +93,7 @@ export class AuthEffects {
             new Date(userData._tokenExpirationDate).getTime() -
             new Date().getTime();
           this.authService.setLogoutTimer(expirationDuration);
-          return authenticateSuccess({ value: loadedUser });
+          return authenticateSuccess({ value: loadedUser, redirect: false });
         }
         return { type: 'Not valid' };
       })
@@ -152,8 +152,10 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(authenticateSuccess),
-        tap(() => {
-          this.router.navigate(['/']);
+        tap((action) => {
+          if (action.redirect) {
+            this.router.navigate(['/']);
+          }
         })
       ),
     { dispatch: false }
